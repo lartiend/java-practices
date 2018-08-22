@@ -28,7 +28,7 @@ public class Splice {
 		return subSet;
 	}
 	public static boolean isSpliceJoin(String text, int len, String target) {
-		if(isSameLength(text, target) == false || len == 0) return false;
+		if(isSameLength(text, target) == false || len < 1 || len > text.length()) return false;
 		ArrayList<String> textArray = convertToArray(text, len);
 		for(String x: textArray) {
 //			System.out.println(x); // uncomment for debugging purposes only

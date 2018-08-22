@@ -132,27 +132,36 @@ class SpliceTest {
 		boolean expected = false;
 		assertEquals(expected,result);
 	}
+	@Test
+	void lenEqualtoSize() {
+		len = 5; 
+		text = "abkkx";
+		String target = "abkkx";
+		
+		boolean result = Splice.isSpliceJoin(text, len, target);
+		boolean expected = true;
+		assertEquals(expected,result);
+	}
+	@Test
+	void lenLessthanSize() {
+		len = 4; 
+		text = "abkkx";
+		String target = "abkkx";
+		
+		boolean result = Splice.isSpliceJoin(text, len, target);
+		boolean expected = true;
+		assertEquals(expected,result);
+	}
+
+	@Test
+	void lenGreaterthanSize() {
+		len = 6; 
+		text = "abkkx";
+		String target = "abkkx";
+		
+		boolean result = Splice.isSpliceJoin(text, len, target);
+		boolean expected = false;
+		assertEquals(expected,result);
+	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
