@@ -2,23 +2,21 @@ package synerteq;
 
 import java.lang.Math;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Splice {
 /*
  * Only strings are allowed as text and target.
  * len should not be zero.
- * 
+ * Aug 22, 2018		: corrected isSpliceJoin
 */
 
-	public boolean isSameLength(String text, String target) {
+	public static boolean isSameLength(String text, String target) {
 		return isAlpha(text, target) == false ? false : text.length() == target.length();
 	}
-	public boolean isAlpha(String text, String target) {
+	public static boolean isAlpha(String text, String target) {
 	    return text.matches("[a-zA-Z]+") && target.matches("[a-zA-Z]+");
 	}
-	public ArrayList<String> convertToArray(String text, int len) {
+	public static ArrayList<String> convertToArray(String text, int len) {
 		int end = (int)Math.ceil(text.length()/len) + 1;
 		ArrayList<String> subSet = new ArrayList<String>();
 		int cnt = 0;
@@ -29,29 +27,14 @@ public class Splice {
 		}
 		return subSet;
 	}
-	public boolean isSpliceJoin(String text, int len, String target) {
+	public static boolean isSpliceJoin(String text, int len, String target) {
 		if(isSameLength(text, target) == false || len == 0) return false;
-		Splice fstring = new Splice();
-		ArrayList<String> farray = fstring.convertToArray(text, len);
-		
-		for(String x: farray) {
-			if(target.contains(x)) {
-				target = target.replaceFirst(x, "");
-			}
+		ArrayList<String> textArray = convertToArray(text, len);
+		for(String x: textArray) {
+//			System.out.println(x); // uncomment for debugging purposes only
+//			System.out.println(target); // uncomment for debugging purposes only
+			if(target.contains(x)) target = target.replaceFirst(x, " ").trim();
 		}
-		
 		return target.isEmpty();
 	}
-	
-	public static void main(String[] args) {
-		Splice demo = new Splice();
-		String text = "abaca";
-		String target = "abaaca";
-		int len = 2;
-		
-		System.out.println(demo.isSpliceJoin(text, len, target));
-		Queue<String> q = new LinkedList<>();
-		q.
-	}
-
 }
