@@ -163,5 +163,15 @@ class SpliceTest {
 		boolean expected = false;
 		assertEquals(expected,result);
 	}
+	@Test
+	void ababa_baaba() {
+		len = 2; 
+		text = "ababa";
+		String target = "baaba";
+		
+		boolean result = Splice.isSpliceJoin(text, len, target);
+		boolean expected = true;
+		assertEquals(expected,result);
+	}
 	
 }

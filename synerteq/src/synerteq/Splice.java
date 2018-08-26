@@ -31,10 +31,17 @@ public class Splice {
 		if(isSameLength(text, target) == false || len < 1 || len > text.length()) return false;
 		ArrayList<String> textArray = convertToArray(text, len);
 		for(String x: textArray) {
-//			System.out.println(x); // uncomment for debugging purposes only
-//			System.out.println(target); // uncomment for debugging purposes only
+			System.out.println(x); // uncomment for debugging purposes only
+			System.out.println(target); // uncomment for debugging purposes only
 			if(target.contains(x)) target = target.replaceFirst(x, " ").trim();
 		}
 		return target.isEmpty();
 	}
+	
+	public static void main(String[] args) {
+		String text = "baaba";
+		String target = "ababa";
+		System.out.println(isSpliceJoin(text, 2, target));
+	}
 }
+
